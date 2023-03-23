@@ -30,8 +30,6 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
-
-
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
@@ -62,6 +60,7 @@ button:focus-visible {
   padding: 1px;
   display: flex;
   justify-content: space-between;
+  align-items: center
   flex-grow: 1;
   font-size: 13px;
   border-collapse: collapse;
@@ -85,6 +84,15 @@ button:focus-visible {
   //border-radius: 50% 20% / 10% 40%;
   border-radius: 10px 100px / 120px;
 }
+.TaskStyle {
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  padding: auto;
+}
+
 .box {
   border: 0;
   background-color: aliceblue;
@@ -94,6 +102,7 @@ button:focus-visible {
   outline: none;
   border: none;
   outline: 0px;
+  align-items: center;
 }
 .box:hover {
   /*background-color: rgba(201, 199, 253, 0.92);*/

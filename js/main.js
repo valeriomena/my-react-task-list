@@ -9,23 +9,7 @@ Task = {
 };
 //array de obejtos que simula la base de datos
 baseDatos = [];
-var tabletask = document.getElementById("listTask");
-// se agrega un eventlistener en la tabla para identificar en que boton se hace click
-tablaTitulos.addEventListener("click", verificarClick);
 
-function verificarClick(e) { 
-    //console.log("este es el evento: "+e.target.parentNode.parentNode.rowIndex);
-    let table = document.getElementById("listTask");
-    let index = e.target.parentNode;
-    console.log("Este es el objeto que dio click de la fila "+index)
-    var value = cell.innerHTML; // valor de la celda
-    console.log("Contacto a eliminar: " + value);
-    document.getElementById("buscar").value = value;
-    //baseDatos.splice(index, 1);//Se elimina el objeto del array
-    eliminar(); // se llama a eliminar para quitar el objeto
-    tabla.deleteRow(index);//se elimina la fila a la que se le dio click
-    
-}
 function CaptureTask() { 
     //console.log("CAPTURADO");
     //Definicion del objeto contacto
@@ -51,6 +35,25 @@ function CaptureTask() {
    /*  contador = 0;
     habilitarBotones(); */
 } 
+
+var tabletask = document.getElementById("listTask");
+// se agrega un eventlistener en la tabla para identificar en que boton se hace click
+tablaTitulos.addEventListener("click", verificarClick);
+
+function verificarClick(e) { 
+    //console.log("este es el evento: "+e.target.parentNode.parentNode.rowIndex);
+    let table = document.getElementById("listTask");
+    let index = e.target.parentNode;
+    console.log("Este es el objeto que dio click de la fila "+index)
+    var value = cell.innerHTML; // valor de la celda
+    console.log("Contacto a eliminar: " + value);
+    document.getElementById("buscar").value = value;
+    //baseDatos.splice(index, 1);//Se elimina el objeto del array
+    eliminar(); // se llama a eliminar para quitar el objeto
+    tabla.deleteRow(index);//se elimina la fila a la que se le dio click
+    
+}
+
 function deletetask() { 
     var searchData = document.getElementById("buscar").value;//trae el contacto a eliminar
     //busca el objeto con concidencia por nombre
