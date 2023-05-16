@@ -1,30 +1,51 @@
 import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import HeadTitle from '../componets/HeadTitle'
 import Tasklist from '../componets/TaskList'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faListCheck} from '@fortawesome/free-solid-svg-icons'
-import { useForm } from 'react-hook-form'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
   const { register, handleSubmit } = useForm();
+  const saveToLocalStorage = (list) => { 
+    try {
+      if (!localStorage.getItem("tasks")) {
+        localStorage.setItem("tasks", JSON.stringify(list));
+      }
+    } catch (error) {
+      console.error (error)
+    }
+  }
+  const readFromLocalStorage = () => {
+    const data = localStorage.getItem('tasks');
+    if (data) {
+      setList(JSON.parse(data));
+    }
+  };
+  
   const list = [
          { name:'Estudiar' , descript:'curso de react', date:'15/4/', hour:'6:00 pm'},
          { name:'Enseñar' , descript:'curso de java', date:'15/4/', hour:'6:00 pm'} 
   ]
-  const [baseDatos, setArreglo] = useState(list)
+  const [baseDatos, setbaseDatos] = useState(list)
   console.log(baseDatos)
  
   const onSubmit = (data) => { 
     console.log(data);
-    setArreglo([...baseDatos, data])
+    setbaseDatos([...baseDatos, data])
+    setList(data);
+    saveToLocalStorage(data);
     console.log('esta es la base de datos'+baseDatos)
   }
   return (
     <div className="App">
-      <HeadTitle titulo='lista de tareas' /> 
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <header>
+        <HeadTitle titulo='lista de tareas' />
+      </header>  
+      <div className='container'>
+      <form className='registro' onSubmit={handleSubmit(onSubmit)}>
       <div className='FormTask'>
         
         <input className='box' type="text" {...register('name')} id='name' required placeholder='Nombre de la tarea' />
@@ -45,7 +66,7 @@ function App() {
          <Tasklist list={ baseDatos } /> 
       
       </div>
-        <script src="js/main.js"></script>
+      </div> 
     </div>
   )
 }

@@ -1,3 +1,4 @@
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -27,8 +28,15 @@ body {
   margin: 10px;
   display: flex;
   place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+ /*  min-width: 320px;
+  min-height: 100vh; */
+}
+.container {
+    display: flex;
+    
+}
+.registro {
+  width: 350px;
 }
 h1 {
   font-size: 3.2em;
@@ -42,31 +50,32 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #f14a0d;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
-  box-shadow: 0 0 20px #1a5780;
+  border-color: #f5eb28;
+  box-shadow: 0 0 20px #F24405;
   border-radius: 55px;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-.TaskStyle{
+.TaskStyle {
+  font-size: 15px;
   margin: 1px;
   padding: 1px;
   display: flex;
   justify-content: space-between;
-  align-items: center
+  align-items: center;
   flex-grow: 1;
   font-size: 13px;
   border-collapse: collapse;
   width: 100%;
   margin: 2px 0;
-  background-color: #fff;
+  background-color: #A0E3F2;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 20px rgba(0, 0, 0, 4);
   /*genera una sombra*/
@@ -75,24 +84,15 @@ button:focus-visible {
   border-radius: 10px 100px / 120px;
 }
 .FormTask {
-  margin: 20% 30%;
+  font-size: 15px;
+  /* margin: 10% 20%; */
   padding: 3% 1%;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  background-color: #b095f1;
-  //border-radius: 50% 20% / 10% 40%;
+  background-color: #474073;
   border-radius: 10px 100px / 120px;
 }
-.TaskStyle {
-  font-size: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: auto;
-  padding: auto;
-}
-
 .box {
   border: 0;
   background-color: aliceblue;
@@ -113,12 +113,12 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: #A0E3F2;
   }
   a:hover {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #F26E22;
   }
 }
