@@ -5,12 +5,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRightFromBracket, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 
 function HeaderTask() {
-  const { dataUsers } = useContext(DataTask);
+  const { dataUsers, settaskManager, settaskManagerEmail } = useContext(DataTask);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loggedInUser, setLoggedInUser] = useState(DataTask);
-
+  
   const handleLogout = () => {
+    settaskManagerEmail(null);
+    settaskManager(null);
     setLoggedInUser(null);
   };
 
@@ -18,6 +20,9 @@ function HeaderTask() {
     e.preventDefault();
     const user = dataUsers.find((user) => user.name === username && user.password === password);
     if (user) {
+      console.log(user.email);
+      settaskManagerEmail(user.email);
+      settaskManager(user.name);
       setLoggedInUser(user);
       setUsername('');
       setPassword('');

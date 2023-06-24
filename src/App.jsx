@@ -15,7 +15,20 @@ function App() {
   ]);
   const [dataUsers, setdataUsers] = useState([
     { id: 'ccDXHXwbcQx5UD-4JjuUs', name: 'Andres', email: 'valerio_mena@hotmail.com', password: '123456', passwordCheck: '123456' }
+    
   ]);
+
+  const [taskManager, settaskManager] = useState();
+  const [taskManagerEmail, settaskManagerEmail] = useState();
+  const [userEmails, setUserEmails] = useState([]);
+  const [userNames, setUserNames] = useState([]);
+
+  useEffect(() => {
+  const emails = dataUsers.map((user) => user.email);
+    setUserEmails(emails);
+  const names = dataUsers.map((user) => user.name);
+    setUserNames(names); 
+}, [dataUsers]);
  
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("ListTask"));
@@ -26,7 +39,7 @@ function App() {
 
   return (
     <div className="container">
-      <DataTask.Provider value={{ ListTask, setListTask, dataUsers, setdataUsers }}>
+      <DataTask.Provider value={{ ListTask, setListTask, dataUsers, setdataUsers, taskManager, settaskManager, taskManagerEmail, settaskManagerEmail, userEmails,userNames }}>
          <BrowserRouter>
          <Headertask />
           <Routes>

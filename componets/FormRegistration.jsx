@@ -18,7 +18,6 @@ const FormRegistration = () => {
     };
 
     console.log(data);
-    alert(data);
     setDataUsers([...dataUsers, newData]);
     console.log(dataUsers);
   };

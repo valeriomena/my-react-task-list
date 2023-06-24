@@ -13,8 +13,7 @@ const schema = yup.object().shape({
 });
 
 function FormTaks() {
-  const { ListTask, setListTask } = useContext(DataTask);
-  const { dataUsers } = useContext(DataTask);
+  const { ListTask, setListTask, taskManagerEmail,userNames } = useContext(DataTask);
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
@@ -37,7 +36,15 @@ function FormTaks() {
         <input className='box' type="date" {...register('date')} id="date" name="date" />
         {errors.date && <span className="error">{errors.date.message}</span>}
         <input className='box' type="time" {...register('hour')} id="hour" name="hour" />
-        <p>{dataUsers.email}</p>
+        <select className='box' {...register('name')} id='name' defaultValue="">
+            <option value="" disabled hidden>Responsable de la tarea</option>
+            {userNames.map((name) => (
+              <option key={name} value={name}>
+                {name}
+              </option>
+              ))}
+        </select>
+        <label>{taskManagerEmail}</label>
         <button className='buttonform' type="submit">
           <span>
             <FontAwesomeIcon icon={faListCheck} />
