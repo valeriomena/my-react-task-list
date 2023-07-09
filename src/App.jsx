@@ -1,53 +1,56 @@
-import { useState } from 'react'
-import HeadTitle from '../componets/HeadTitle'
-import Tasklist from '../componets/TaskList'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faListCheck} from '@fortawesome/free-solid-svg-icons'
-import { useForm } from 'react-hook-form'
+import { useEffect, useState } from 'react'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { DataTask } from '../componets/ContexTask'
+import HomePage from '../pages/HomePage'
+import RegisterPage from '../pages/RegisterPage'
+import WorkAreaPage from '../pages/WorkAreaPage'
+import FooterTask from '../componets/FooterTask'
+import Headertask from '../componets/HeaderTask'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-  const { register, handleSubmit } = useForm();
-  const list = [
-         { name:'Estudiar' , descript:'curso de react', date:'15/4/', hour:'6:00 pm'},
-         { name:'Enseñar' , descript:'curso de java', date:'15/4/', hour:'6:00 pm'} 
-  ]
-  const [baseDatos, setArreglo] = useState(list)
-  console.log(baseDatos)
+  const [ListTask, setListTask] = useState([
+    { id: '345', doneTask: true, name: 'Estudiar', descript: 'curso de react', date: '15/4/', hour: '6:00 pm', email: 'valerio_mena@hotmail.com' },
+    { id: '346', doneTask: false, name: 'Enseñar', descript: 'curso de java', date: '15/4/', hour: '6:00 pm', email: 'valerio_mena@hotmail.com' }
+  ]);
+  const [dataUsers, setdataUsers] = useState([
+    { id: 'ccDXHXwbcQx5UD-4JjuUs', name: 'Andres', email: 'valerio_mena@hotmail.com', password: '123456', passwordCheck: '123456' }
+    
+  ]);
+
+  const [taskManager, settaskManager] = useState();
+  const [taskManagerEmail, settaskManagerEmail] = useState();
+  const [userEmails, setUserEmails] = useState([]);
+  const [userNames, setUserNames] = useState([]);
+
+  useEffect(() => {
+  const emails = dataUsers.map((user) => user.email);
+    setUserEmails(emails);
+  const names = dataUsers.map((user) => user.name);
+    setUserNames(names); 
+}, [dataUsers]);
  
-  const onSubmit = (data) => { 
-    console.log(data);
-    setArreglo([...baseDatos, data])
-    console.log('esta es la base de datos'+baseDatos)
-  }
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("ListTask"));
+    if (data) {
+      setListTask(data);
+    }
+  }, []);
+
   return (
-    <div className="App">
-      <HeadTitle titulo='lista de tareas' /> 
-      <form onSubmit={handleSubmit(onSubmit)}>
-      <div className='FormTask'>
-        
-        <input className='box' type="text" {...register('name')} id='name' required placeholder='Nombre de la tarea' />
-        <textarea className='box' type="textArea" {...register('descript')} id='descript' placeholder='Descripcion' />
-        <input className='box' type="date" {...register('date')} id="date" name="date"></input>
-        <input className='box' type="time" {...register('hour')} id="hour" name="hour"></input>
-        
-        <button type="submit">
-          <span>
-            <FontAwesomeIcon icon={faListCheck} />
-          </span>
-        </button>
-        
-      </div>
-      </form>      
-      <div className='listTask'>
-       
-         <Tasklist list={ baseDatos } /> 
-      
-      </div>
-        <script src="js/main.js"></script>
+    <div className="container">
+      <DataTask.Provider value={{ ListTask, setListTask, dataUsers, setdataUsers, taskManager, settaskManager, taskManagerEmail, settaskManagerEmail, userEmails,userNames }}>
+         <BrowserRouter>
+         <Headertask />
+          <Routes>
+            <Route path='/' element={<HomePage />} />
+            <Route path='/register-page' element={<RegisterPage />} />
+            <Route path='/work-area' element={<WorkAreaPage />} />
+          </Routes>
+        </BrowserRouter>
+        <FooterTask />
+      </DataTask.Provider>
     </div>
   )
 }
-
 export default App
