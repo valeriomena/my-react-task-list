@@ -2,6 +2,7 @@ import React from 'react';
 import FormTaks from '../componets/FormTask';
 import Tasklist from '../componets/TaskList';
 
+
 function WorkAreaPage() {
   return (
     <div className="container">
@@ -9,7 +10,8 @@ function WorkAreaPage() {
           <FormTaks />
       </div>       
       <div className='listTask'>
-         <Tasklist /> 
+        <div><Tasklist /></div>
+        
       </div>
     </div>
   );

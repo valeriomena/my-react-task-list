@@ -22,7 +22,9 @@ function FormTaks() {
   const newData = {
     id: nanoid(),
     ...data,
-    date: data.date.toLocaleDateString(), // Convertir el objeto Date a una cadena de texto
+    date: data.date.toLocaleDateString(), 
+    doneTask: false, 
+    email: taskManagerEmail,
   };
   setListTask([...ListTask, newData]);
   console.log(ListTask);
@@ -36,18 +38,18 @@ function FormTaks() {
         <input className='box' type="date" {...register('date')} id="date" name="date" />
         {errors.date && <span className="error">{errors.date.message}</span>}
         <input className='box' type="time" {...register('hour')} id="hour" name="hour" />
-        <select className='box' {...register('name')} id='name' defaultValue="">
+        <select className='box' {...register('responsible')} id='responsible' defaultValue="">
             <option value="" disabled hidden>Responsable de la tarea</option>
-            {userNames.map((name) => (
-              <option key={name} value={name}>
-                {name}
+            {userNames.map((responsible) => (
+              <option key={responsible} value={responsible}>
+                {responsible}
               </option>
               ))}
         </select>
         <label>{taskManagerEmail}</label>
-        <button className='buttonform' type="submit">
+        <button className='buttonform' type="submit" disabled={!taskManagerEmail}>
           <span>
-            <FontAwesomeIcon icon={faListCheck} />
+            {taskManagerEmail ? <FontAwesomeIcon icon={faListCheck} /> : 'Por favor inicie sesión'}
           </span>
         </button>
       </form>

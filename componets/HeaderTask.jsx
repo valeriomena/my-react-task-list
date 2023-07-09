@@ -41,9 +41,14 @@ function HeaderTask() {
                 <Link to="/">About As</Link>
               </button>
               {loggedInUser ? (
-              <button className='buttonheader'>
-                <Link to="/work-area">Work Area</Link>
-                </button>
+                <>
+                  <button className='buttonheader'>
+                    <Link to="/work-area">Work Area</Link>
+                  </button>
+                    <button className='buttonheader'>
+                    <Link to="/indicators">Indicators</Link>
+                  </button>
+                </>
               ) : (
                 <button className='buttonheader'>
                 <Link to="/register-page">Register</Link>
