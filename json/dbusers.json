@@ -1,0 +1,16 @@
+[
+  {
+    "id": "ccDXHXwbcQx5UD-4JjuUs",
+    "name": "Andres",
+    "email": "valerio_mena@hotmail.com",
+    "password": "123456",
+    "passwordCheck": "123456"
+  },
+  {
+    "id": "B8QwAk9EPj8tpHh2LoY0h",
+    "name": "Administrador",
+    "email": "admin@admin.com",
+    "password": "administrador",
+    "passwordCheck": "administrador"
+  }
+]
