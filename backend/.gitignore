@@ -1,0 +1,58 @@
+node_modules/
+# Dependencias
+node_modules/
+
+# Archivos generados por el entorno de desarrollo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+debug.log
+yarn.lock
+
+# Carpeta de producción
+build/
+
+# Carpeta de pruebas
+coverage/
+
+# Archivos de configuración de desarrollo
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Archivos de caché y configuración
+.env*
+.cache/
+dist/
+.eslintcache
+*.log
+
+# Dependencias específicas del editor
+.idea/
+.vscode/
+*.swp
+*.lock
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# React
+/build
+/dist
+
+# IDE/Editor specific
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.komodoproject
+*.komodotools
+*.kate-swp
+*.kate-swp-bak
+
+# OS specific
+.DS_Store
+Thumbs.db

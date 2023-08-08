@@ -1,0 +1,29 @@
+API key
+
+0YMxkgcNg3snsFb9y1EWOTX2yEWhmTKhOzg1rwKFMG1frmmiz76RjTwyQlHADLHq
+
+datatask
+
+curl --location --request POST 'https://us-east-1.aws.data.mongodb-api.com/app/data-jzbqa/endpoint/data/v1/action/findOne' \
+--header 'Content-Type: application/json' \
+--header 'Access-Control-Request-Headers: *' \
+--header 'api-key: 0YMxkgcNg3snsFb9y1EWOTX2yEWhmTKhOzg1rwKFMG1frmmiz76RjTwyQlHADLHq' \
+--data-raw '{
+    "collection":"task",
+    "database":"DBMyDataList",
+    "dataSource":"Cluster0",
+    "projection": {"_id": 1}
+}'
+
+datausers
+
+curl --location --request POST 'https://us-east-1.aws.data.mongodb-api.com/app/data-jzbqa/endpoint/data/v1/action/findOne' \
+--header 'Content-Type: application/json' \
+--header 'Access-Control-Request-Headers: *' \
+--header 'api-key: 0YMxkgcNg3snsFb9y1EWOTX2yEWhmTKhOzg1rwKFMG1frmmiz76RjTwyQlHADLHq' \
+--data-raw '{
+    "collection":"users",
+    "database":"DBMyDataList",
+    "dataSource":"Cluster0",
+    "projection": {"_id": 1}
+}'
